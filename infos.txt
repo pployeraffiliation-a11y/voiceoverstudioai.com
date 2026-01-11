@@ -1,0 +1,21 @@
+Affiliation elevenlabs 
+
+lien affilié : https://try.elevenlabs.io/ngxkdu61n0np
+
+GS4 : <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZVBSC02R2X"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZVBSC02R2X');
+</script>
+
+domaine : voiceoverstudioai.com
+
+videos YouTube a utiliser : https://www.youtube.com/watch?v=QB7uqR3f_po
+                            https://www.youtube.com/watch?v=I6pVSStmALo
+                            https://www.youtube.com/watch?v=VDwTSuKbrg8
+
+infos pages légales : proprietaire du site P.Ployer , develloper E-Com Shop , domaine acheté chez ovh et site deployé sur netlify, adresse mail service client : p.ployer.affiliation@gmail.com
