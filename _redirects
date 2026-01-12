@@ -1,0 +1,34 @@
+# Force HTTPS + non-www (single hop)
+http://voiceoverstudioai.com/* https://voiceoverstudioai.com/:splat 301!
+http://www.voiceoverstudioai.com/* https://voiceoverstudioai.com/:splat 301!
+https://www.voiceoverstudioai.com/* https://voiceoverstudioai.com/:splat 301!
+
+# Canonical home
+/index.html / 301!
+/index / 301!
+
+# Force extensionless -> .html to avoid duplicates
+/index-fr /index-fr.html 301!
+/index-de /index-de.html 301!
+/index-es /index-es.html 301!
+
+/blog /blog/index.html 301!
+/blog/index /blog/index.html 301!
+/blog/index-fr /blog/index-fr.html 301!
+/blog/index-de /blog/index-de.html 301!
+/blog/index-es /blog/index-es.html 301!
+
+/blog/ai-voiceover-2026 /blog/ai-voiceover-2026.html 301!
+/blog/ai-voiceover-2026-fr /blog/ai-voiceover-2026-fr.html 301!
+/blog/ai-voiceover-2026-de /blog/ai-voiceover-2026-de.html 301!
+/blog/ai-voiceover-2026-es /blog/ai-voiceover-2026-es.html 301!
+
+/legal/legal-notice /legal/legal-notice.html 301!
+/legal/legal-notice-fr /legal/legal-notice-fr.html 301!
+/legal/legal-notice-de /legal/legal-notice-de.html 301!
+/legal/legal-notice-es /legal/legal-notice-es.html 301!
+
+/legal/privacy /legal/privacy.html 301!
+/legal/privacy-fr /legal/privacy-fr.html 301!
+/legal/privacy-de /legal/privacy-de.html 301!
+/legal/privacy-es /legal/privacy-es.html 301!

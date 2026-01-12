@@ -11,3 +11,7 @@ assets/videos/*.mp4
 !assets/videos/demo2.mp4
 !assets/videos/demo3.mp4
 !assets/videos/Studio 3.0 .mp4
+
+# SEO audit exports
+_ahrefs/
+*.zip
