@@ -78,6 +78,12 @@ header {
   box-shadow: var(--shadow-soft);
 }
 
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
 .nav-links {
   display: flex;
   align-items: center;

@@ -1,0 +1,9 @@
+Notice-HTTP_to_HTTPS_redirect.csv
+Notice-Redirect_chain.csv
+Warning-3XX_redirect-links.csv
+Warning-3XX_redirect.csv
+Warning-indexable-Meta_description_too_short.csv
+Warning-indexable-Page_has_links_to_redirect-links.csv
+Warning-indexable-Page_has_links_to_redirect.csv
+Warning-indexable-Redirected_page_has_no_incoming_internal_links-links.csv
+Warning-indexable-Redirected_page_has_no_incoming_internal_links.csv
