@@ -1,0 +1,20 @@
+[build]
+  publish = "."
+
+[[redirects]]
+  from = "http://www.voiceoverstudioai.com/*"
+  to = "https://voiceoverstudioai.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://voiceoverstudioai.com/*"
+  to = "https://voiceoverstudioai.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.voiceoverstudioai.com/*"
+  to = "https://voiceoverstudioai.com/:splat"
+  status = 301
+  force = true

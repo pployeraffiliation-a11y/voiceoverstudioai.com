@@ -15,3 +15,4 @@ assets/videos/*.mp4
 # SEO audit exports
 _ahrefs/
 *.zip
+voiceoverstudioai_*_all-issues_*/

@@ -55,11 +55,21 @@ function normalizeLang(lang) {
 
 function localizedUrl(pathname, lang) {
   const targetLang = normalizeLang(lang);
-  const path = pathname && pathname !== '/' ? pathname : '/index.html';
+  let path = pathname || '/';
+
+  if (path === '/') {
+    return targetLang === 'en' ? '/' : `/index-${targetLang}.html`;
+  }
+
+  path = path.replace(/\/+$/, '');
+  if (path === '/blog') path = '/blog/index.html';
+  if (!path.endsWith('.html')) path = `${path}.html`;
+
   const match = path.match(/^(.*?)(-fr|-de|-es)?\.html$/);
   if (!match) return path;
   const base = match[1];
   const suffix = targetLang === 'en' ? '' : `-${targetLang}`;
+  if (base === '/index' && suffix === '') return '/';
   return `${base}${suffix}.html`;
 }
 
