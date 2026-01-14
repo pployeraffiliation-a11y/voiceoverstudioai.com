@@ -124,7 +124,25 @@ function initNav() {
   const hamburger = document.querySelector('.hamburger');
   const nav = document.querySelector('.nav-links');
   if (hamburger && nav) {
-    hamburger.addEventListener('click', () => nav.classList.toggle('open'));
+    const toggle = () => {
+      const open = nav.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', String(open));
+    };
+    hamburger.setAttribute('role', 'button');
+    hamburger.setAttribute('aria-expanded', 'false');
+    hamburger.addEventListener('click', toggle);
+    hamburger.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggle();
+      }
+    });
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
   }
 }
 
