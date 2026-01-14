@@ -56,21 +56,37 @@ function normalizeLang(lang) {
 function localizedUrl(pathname, lang) {
   const targetLang = normalizeLang(lang);
   let path = pathname || '/';
+  if (path !== '/') path = path.replace(/\/+$/, '');
+  path = path.replace(/\.html$/, '');
 
-  if (path === '/') {
-    return targetLang === 'en' ? '/' : `/index-${targetLang}.html`;
+  if (path === '/' || path === '' || path === '/index') {
+    return targetLang === 'en' ? '/' : `/index-${targetLang}`;
   }
 
-  path = path.replace(/\/+$/, '');
-  if (path === '/blog') path = '/blog/index.html';
-  if (!path.endsWith('.html')) path = `${path}.html`;
+  if (path === '/blog') {
+    return targetLang === 'en' ? '/blog/' : `/blog/index-${targetLang}`;
+  }
 
-  const match = path.match(/^(.*?)(-fr|-de|-es)?\.html$/);
-  if (!match) return path;
-  const base = match[1];
-  const suffix = targetLang === 'en' ? '' : `-${targetLang}`;
-  if (base === '/index' && suffix === '') return '/';
-  return `${base}${suffix}.html`;
+  const match = path.match(/^(.*?)(-fr|-de|-es)$/);
+  const base = match ? match[1] : path;
+
+  if (base === '/blog/index') {
+    return targetLang === 'en' ? '/blog/' : `/blog/index-${targetLang}`;
+  }
+
+  if (base === '/blog/ai-voiceover-2026') {
+    return targetLang === 'en' ? base : `${base}-${targetLang}`;
+  }
+
+  if (base === '/legal/privacy' || base === '/legal/legal-notice') {
+    return targetLang === 'en' ? base : `${base}-${targetLang}`;
+  }
+
+  if (base === '/index') {
+    return targetLang === 'en' ? '/' : `/index-${targetLang}`;
+  }
+
+  return targetLang === 'en' ? base : `${base}-${targetLang}`;
 }
 
 function setLanguage(lang) {
