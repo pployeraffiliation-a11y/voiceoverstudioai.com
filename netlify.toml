@@ -1,6 +1,11 @@
 [build]
   publish = "."
 
+[[headers]]
+  for = "/styles.css"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
 [[redirects]]
   from = "http://www.voiceoverstudioai.com/*"
   to = "https://voiceoverstudioai.com/:splat"
