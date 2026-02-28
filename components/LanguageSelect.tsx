@@ -1,12 +1,15 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
+import { useId } from 'react';
 import type { Lang } from '@/lib/site';
 import { getLangFromPathname, localizedUrl, SITE } from '@/lib/site';
 
 export function LanguageSelect() {
+  const selectId = useId();
   const pathname = usePathname() ?? '/';
   const lang = getLangFromPathname(pathname);
+  const label = lang === 'fr' ? 'Langue' : lang === 'de' ? 'Sprache' : lang === 'es' ? 'Idioma' : 'Language';
 
   function onChange(nextLang: Lang) {
     try {
@@ -18,12 +21,14 @@ export function LanguageSelect() {
   }
 
   return (
-    <div className="lang-switcher">
-      <label aria-label="Language" htmlFor="language-select">
-        🌐
+    <div className="lang-select-container">
+      <span aria-hidden="true">🌐</span>
+      <label className="sr-only" htmlFor={selectId}>
+        {label}
       </label>
       <select
-        id="language-select"
+        className="lang-select"
+        id={selectId}
         onChange={(e) => onChange(e.target.value as Lang)}
         value={lang}
       >
@@ -36,4 +41,3 @@ export function LanguageSelect() {
     </div>
   );
 }
-

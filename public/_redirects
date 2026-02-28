@@ -7,6 +7,11 @@
 /index-de.html /index-de 301!
 /index-es.html /index-es 301!
 
+/guide-elevenlabs.html /guide-elevenlabs 301!
+/guide-elevenlabs-fr.html /guide-elevenlabs-fr 301!
+/guide-elevenlabs-de.html /guide-elevenlabs-de 301!
+/guide-elevenlabs-es.html /guide-elevenlabs-es 301!
+
 /blog.html /blog/ 301!
 /blog/index.html /blog/ 301!
 /blog/index /blog/ 301!
@@ -37,6 +42,15 @@
 /index-es /index-es.html 200
 /index-es/ /index-es.html 200
 
+/guide-elevenlabs /guide-elevenlabs.html 200
+/guide-elevenlabs/ /guide-elevenlabs.html 200
+/guide-elevenlabs-fr /guide-elevenlabs-fr.html 200
+/guide-elevenlabs-fr/ /guide-elevenlabs-fr.html 200
+/guide-elevenlabs-de /guide-elevenlabs-de.html 200
+/guide-elevenlabs-de/ /guide-elevenlabs-de.html 200
+/guide-elevenlabs-es /guide-elevenlabs-es.html 200
+/guide-elevenlabs-es/ /guide-elevenlabs-es.html 200
+
 /blog /blog.html 200
 /blog/ /blog.html 200
 /blog/* /blog/:splat.html 200
@@ -44,4 +58,3 @@
 
 /legal/* /legal/:splat.html 200
 /legal/*/ /legal/:splat.html 200
-

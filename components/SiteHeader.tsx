@@ -1,9 +1,10 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { LanguageSelect } from '@/components/LanguageSelect';
-import { blogIndexPath, getLangFromPathname, homePath, privacyPath, SITE, UI_TRANSLATIONS } from '@/lib/site';
+import { blogIndexPath, getLangFromPathname, guidePath, homePath, legalNoticePath, privacyPath, SITE, UI_TRANSLATIONS } from '@/lib/site';
 
 export function SiteHeader() {
   const pathname = usePathname() ?? '/';
@@ -11,71 +12,33 @@ export function SiteHeader() {
   const t = UI_TRANSLATIONS[lang];
 
   const home = homePath(lang);
-  const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
-
-  function toggle() {
-    setOpen((v) => !v);
-  }
-
-  function onHamburgerKeyDown(e: React.KeyboardEvent<HTMLDivElement>) {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      toggle();
-    }
-  }
-
-  function onNavClick(e: React.MouseEvent<HTMLDivElement>) {
-    const target = e.target as HTMLElement | null;
-    if (target?.closest('a')) setOpen(false);
-  }
+  const guide = guidePath(lang);
+  const blog = blogIndexPath(lang);
+  const legal = legalNoticePath(lang);
+  const privacy = privacyPath(lang);
 
   return (
-    <header>
-      <nav className="navbar">
-        <a aria-label={SITE.brandName} className="brand" href={home}>
-          <img
-            alt="VoiceOverStudioAI logo"
-            decoding="async"
-            height={120}
-            src="/assets/images/voiceoverstudioai-logo.png"
-            width={600}
-          />
-        </a>
+    <header className="header">
+      <div className="header-inner">
+        <div className="brand-group">
+          <Link aria-label={SITE.brandName} className="brand" href={home}>
+            <Image alt={SITE.brandName} height={36} priority src="/assets/images/voiceoverstudioai-logo.png" width={180} />
+          </Link>
+        </div>
 
-        <div className="nav-right">
-          <LanguageSelect />
-
-          <div
-            aria-expanded={open}
-            aria-label="Toggle navigation"
-            className="hamburger"
-            onClick={toggle}
-            onKeyDown={onHamburgerKeyDown}
-            role="button"
-            tabIndex={0}
-          >
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-
-          <div className={`nav-links ${open ? 'open' : ''}`} onClick={onNavClick}>
-            <a href={`${home}#hero`}>{t.home}</a>
-            <a href={`${home}#platform`}>{t.features}</a>
-            <a href={`${home}#usecases`}>{t.useCases}</a>
-            <a href={`${home}#pricing`}>{t.pricing}</a>
-            <a href={blogIndexPath(lang)}>{t.blog}</a>
-            <a href={privacyPath(lang)}>{t.legal}</a>
-            <a className="cta" data-cta="" href={SITE.affiliateLink}>
+        <div className="header-right">
+          <nav aria-label="Primary" className="nav">
+            <Link href={guide}>{t.guide}</Link>
+            <Link href={blog}>{t.blog}</Link>
+            <Link href={privacy}>{t.privacy}</Link>
+            <Link href={legal}>{t.legal}</Link>
+            <a className="cta-btn" data-cta="" href={SITE.affiliateLink} rel="noopener noreferrer" target="_blank">
               {t.cta}
             </a>
-          </div>
+          </nav>
+          <LanguageSelect />
         </div>
-      </nav>
+      </div>
     </header>
   );
 }

@@ -3,6 +3,7 @@ import path from 'node:path';
 import matter from 'gray-matter';
 import { compileMDX } from 'next-mdx-remote/rsc';
 import type { Post, PostType } from '@/lib/types';
+import type { TocHeading } from '@/components/TableOfContents';
 
 const CONTENT_DIR = path.join(process.cwd(), 'content');
 
@@ -16,6 +17,12 @@ export type Frontmatter = {
   updatedAt?: string;
   robots?: string;
   type?: PostType;
+  primaryKeyword?: string;
+  jumpLinks?: { href: string; label: string }[];
+  quickAnswer?: string[];
+  cta?: { title: string; body: string; buttonLabel: string; buttonHref: string };
+  internalLinks?: { href: string; anchor: string }[];
+  faq?: { q: string; a: string }[];
 };
 
 export type DocMeta = {
@@ -32,6 +39,146 @@ export type DocMeta = {
   robots?: string;
   type?: PostType;
 };
+
+function extractHeadingsFromMdxSource(source: string): TocHeading[] {
+  type Match = { index: number; level: number; text: string; explicitId?: string };
+  const matches: Match[] = [];
+
+  // Markdown headings (## to ####)
+  const mdRe = /^(#{2,4})\s+(.+?)\s*$/gm;
+  for (const m of source.matchAll(mdRe)) {
+    const level = m[1]?.length ?? 2;
+    const text = (m[2] ?? '').replace(/`/g, '').trim();
+    if (!text) continue;
+    matches.push({ index: m.index ?? 0, level, text });
+  }
+
+  // HTML headings (<h2> to <h4>)
+  const htmlRe = /<h([2-4])\b([^>]*)>([\s\S]*?)<\/h\1>/gi;
+  for (const m of source.matchAll(htmlRe)) {
+    const level = Number(m[1] ?? 2);
+    const attrs = m[2] ?? '';
+    const inner = m[3] ?? '';
+    const explicitId = /id\s*=\s*["']([^"']+)["']/i.exec(attrs)?.[1];
+    const text = decodeHtmlEntities(stripHtmlTags(inner)).replace(/`/g, '').trim();
+    if (!text) continue;
+    matches.push({ index: m.index ?? 0, level, text, explicitId });
+  }
+
+  matches.sort((a, b) => a.index - b.index);
+
+  const headings: TocHeading[] = [];
+  const slugger = createSlugger();
+
+  for (const h of matches) {
+    if (h.explicitId) {
+      slugger.use(h.explicitId);
+      headings.push({ id: h.explicitId, text: h.text, level: h.level });
+      continue;
+    }
+    headings.push({ id: slugger.slug(h.text), text: h.text, level: h.level });
+  }
+
+  return headings;
+}
+
+function slugify(input: string): string {
+  return input
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, ' ')
+    .trim()
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-');
+}
+
+type Slugger = { use: (slug: string) => void; slug: (text: string) => string };
+
+function createSlugger(): Slugger {
+  const counts = new Map<string, number>();
+
+  function use(slug: string) {
+    counts.set(slug, (counts.get(slug) ?? 0) + 1);
+  }
+
+  function slug(text: string) {
+    const base = slugify(text) || 'section';
+    const count = counts.get(base) ?? 0;
+    counts.set(base, count + 1);
+    return count === 0 ? base : `${base}-${count + 1}`;
+  }
+
+  return { use, slug };
+}
+
+function stripHtmlTags(input: string): string {
+  return input.replace(/<[^>]*>/g, '');
+}
+
+function decodeHtmlEntities(input: string): string {
+  return input
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&#x27;/gi, "'")
+    .replace(/&#x2f;/gi, '/')
+    .replace(/&#(\d+);/g, (_m, n: string) => String.fromCharCode(Number(n)))
+    .replace(/&#x([0-9a-f]+);/gi, (_m, n: string) => String.fromCharCode(Number.parseInt(n, 16)));
+}
+
+function rehypeAddHeadingIds() {
+  return (tree: unknown) => {
+    const slugger = createSlugger();
+
+    function getText(node: any): string {
+      if (!node) return '';
+      if (node.type === 'text' && typeof node.value === 'string') return node.value;
+      if (!Array.isArray(node.children)) return '';
+      return node.children.map(getText).join('');
+    }
+
+    function walk(node: any) {
+      if (!node) return;
+
+      if (node.type === 'element') {
+        node.properties ??= {};
+        const existingId = node.properties.id;
+        if (existingId) slugger.use(String(existingId));
+
+        const tag = String(node.tagName ?? '').toLowerCase();
+        if ((tag === 'h2' || tag === 'h3' || tag === 'h4') && !node.properties.id) {
+          const text = getText(node).trim();
+          if (text) node.properties.id = slugger.slug(text);
+        }
+      }
+
+      if (node.type === 'mdxJsxFlowElement' || node.type === 'mdxJsxTextElement') {
+        const tag = String(node.name ?? '').toLowerCase();
+        const attributes = Array.isArray(node.attributes) ? node.attributes : [];
+        const existingId = attributes.find((a: any) => a?.type === 'mdxJsxAttribute' && a?.name === 'id')?.value;
+        if (typeof existingId === 'string') slugger.use(existingId);
+
+        if ((tag === 'h2' || tag === 'h3' || tag === 'h4') && typeof existingId !== 'string') {
+          const text = getText(node).trim();
+          if (text) {
+            node.attributes ??= [];
+            node.attributes.push({ type: 'mdxJsxAttribute', name: 'id', value: slugger.slug(text) });
+          }
+        }
+      }
+
+      if (Array.isArray(node.children)) {
+        for (const child of node.children) walk(child);
+      }
+    }
+
+    walk(tree as any);
+  };
+}
 
 async function exists(filePath: string): Promise<boolean> {
   try {
@@ -51,6 +198,27 @@ function segmentsFromMdxRelativePath(relativePath: string): string[] {
   const rawSegments = noExt.split(/[/\\]+/).filter(Boolean);
   if (rawSegments.at(-1) === 'index') rawSegments.pop();
   return rawSegments;
+}
+
+function inferTypeFromSegments(segments: string[], fm: Frontmatter): PostType | undefined {
+  if (fm.type) return fm.type;
+  if (segments[0] === 'legal') return 'legal';
+  if (segments[0] === 'blog') {
+    if (segments.length === 1) return 'blogIndex';
+    if (segments.length === 2 && segments[1]?.startsWith('index-')) return 'blogIndex';
+    return 'article';
+  }
+  return 'page';
+}
+
+function stripH1(source: string): string {
+  return (
+    source
+      // Markdown H1
+      .replace(/^\s*#\s+.+$/gm, '')
+      // HTML H1
+      .replace(/<h1\b[^>]*>[\s\S]*?<\/h1>/gi, '')
+  );
 }
 
 async function listMdxFiles(dir: string): Promise<string[]> {
@@ -99,7 +267,7 @@ export async function getAllDocMetas(): Promise<DocMeta[]> {
       date: fm.date,
       updatedAt: fm.updatedAt,
       robots: fm.robots,
-      type: fm.type,
+      type: inferTypeFromSegments(segments, fm),
     });
   }
 
@@ -131,7 +299,7 @@ export async function getDocMetaByRouteSegments(segments: string[]): Promise<Doc
     date: fm.date,
     updatedAt: fm.updatedAt,
     robots: fm.robots,
-    type: fm.type,
+    type: inferTypeFromSegments(resolvedSegments, fm),
   };
 }
 
@@ -162,10 +330,12 @@ export async function getPostByRouteSegments(segments: string[]): Promise<Post |
   const raw = await fs.readFile(filePath, 'utf8');
   const { content: mdxSource, data } = matter(raw);
   const fm = data as Frontmatter;
+  const headings = extractHeadingsFromMdxSource(mdxSource);
+  const safeSource = stripH1(mdxSource);
 
   // Build-time compilation of trusted local MDX.
   const compiled = await compileMDX({
-    source: mdxSource,
+    source: safeSource,
     options: {
       parseFrontmatter: false,
       mdxOptions: {
@@ -174,6 +344,7 @@ export async function getPostByRouteSegments(segments: string[]): Promise<Post |
         // @ts-expect-error - options are passed through
         blockDangerousJS: true,
         blockJS: true,
+        rehypePlugins: [rehypeAddHeadingIds],
       },
     },
   });
@@ -187,11 +358,17 @@ export async function getPostByRouteSegments(segments: string[]): Promise<Post |
     date: fm.date,
     updatedAt: fm.updatedAt,
     canonical: fm.canonical,
-    type: fm.type,
+    type: inferTypeFromSegments(segments, fm),
     lang: fm.lang,
     translationKey: fm.translationKey,
     robots: fm.robots,
-    headings: [],
+    primaryKeyword: fm.primaryKeyword,
+    jumpLinks: fm.jumpLinks,
+    quickAnswer: fm.quickAnswer,
+    cta: fm.cta,
+    internalLinks: fm.internalLinks,
+    faq: fm.faq,
+    headings,
     content: compiled.content,
   };
 }

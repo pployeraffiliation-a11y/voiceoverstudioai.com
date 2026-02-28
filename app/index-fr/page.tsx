@@ -4,22 +4,20 @@ import { getAllDocMetas } from '@/lib/content';
 import type { Lang } from '@/lib/site';
 import { blogIndexPath, guidePath, legalNoticePath, playbookPath, privacyPath, SITE, UI_TRANSLATIONS } from '@/lib/site';
 
-export async function generateMetadata(): Promise<Metadata> {
-  return {
-    title: SITE.brandName,
-    description: 'Browse all pages: guides, blog posts, and legal documents.',
-    alternates: { canonical: '/' },
-    openGraph: {
-      type: 'website',
-      title: SITE.brandName,
-      description: 'Browse all pages: guides, blog posts, and legal documents.',
-      url: '/',
-    },
-  };
-}
+export const metadata: Metadata = {
+  title: `${SITE.brandName} — Pages`,
+  description: 'Accédez à toutes les pages : guide, blog et pages légales.',
+  alternates: { canonical: '/index-fr' },
+  openGraph: {
+    type: 'website',
+    title: `${SITE.brandName} — Pages`,
+    description: 'Accédez à toutes les pages : guide, blog et pages légales.',
+    url: '/index-fr',
+  },
+};
 
-export default async function HomePage() {
-  const lang: Lang = 'en';
+export default async function HomePageFr() {
+  const lang: Lang = 'fr';
   const t = UI_TRANSLATIONS[lang];
   const metas = await getAllDocMetas();
   const pages = metas.filter((m) => (m.lang ?? 'en') === lang).sort((a, b) => a.routePath.localeCompare(b.routePath));
@@ -42,7 +40,7 @@ export default async function HomePage() {
     <div className="stack">
       <section className="hero">
         <h1>{SITE.brandName}</h1>
-        <p>{t.home}: {t.guide}, {t.blog}, {t.privacy}, {t.legal}.</p>
+        <p>Accédez à toutes les pages : {t.guide}, {t.blog}, {t.privacy}, {t.legal}.</p>
       </section>
 
       <section className="card" aria-label="Pages">
@@ -65,3 +63,4 @@ export default async function HomePage() {
     </div>
   );
 }
+

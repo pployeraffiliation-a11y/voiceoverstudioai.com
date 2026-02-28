@@ -1,15 +1,11 @@
 import type { Metadata, Viewport } from 'next';
-import Script from 'next/script';
 import './globals.css';
 import { SITE } from '@/lib/site';
-import { CookieBanner } from '@/components/CookieBanner';
 import { SiteFooter } from '@/components/SiteFooter';
 import { SiteHeader } from '@/components/SiteHeader';
 
-const GA4_ID = 'G-ZVBSC02R2X';
-
 export const viewport: Viewport = {
-  themeColor: '#0b0b0c',
+  themeColor: '#ffffff',
 };
 
 export const metadata: Metadata = {
@@ -49,19 +45,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body>
         <SiteHeader />
-        <main>{children}</main>
+        <main className="container">{children}</main>
         <SiteFooter />
-        <CookieBanner />
-
-        <Script async src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`} strategy="afterInteractive" />
-        <Script id="ga4" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${GA4_ID}');
-          `}
-        </Script>
       </body>
     </html>
   );

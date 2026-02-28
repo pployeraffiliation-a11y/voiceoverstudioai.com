@@ -1,7 +1,9 @@
 export const SITE = {
   baseUrl: 'https://voiceoverstudioai.com',
+  domain: 'voiceoverstudioai.com',
   brandName: 'VoiceOverStudioAI',
   affiliateLink: 'https://try.elevenlabs.io/ngxkdu61n0np',
+  contactEmail: 'p.ployer.affiliation@gmail.com',
   supportedLangs: ['en', 'fr', 'de', 'es'] as const,
 };
 
@@ -11,58 +13,58 @@ export const UI_TRANSLATIONS: Record<
   Lang,
   {
     home: string;
-    features: string;
-    useCases: string;
-    pricing: string;
+    guide: string;
     blog: string;
+    privacy: string;
     legal: string;
     cta: string;
+    contact: string;
     cookie: string;
     accept: string;
   }
 > = {
   en: {
     home: 'Home',
-    features: 'Platform',
-    useCases: 'Use cases',
-    pricing: 'Plans',
     blog: 'Blog',
-    legal: 'Legal',
+    guide: 'Guide',
+    privacy: 'Privacy',
+    legal: 'Legal notice',
     cta: 'Join ElevenLabs',
+    contact: 'Contact',
     cookie: 'We use cookies for analytics (GA4) and performance insights. You can opt out anytime.',
     accept: 'Accept',
   },
   fr: {
     home: 'Accueil',
-    features: 'Plateforme',
-    useCases: 'Cas d’usage',
-    pricing: 'Formules',
     blog: 'Blog',
-    legal: 'Légal',
+    guide: 'Guide',
+    privacy: 'Confidentialité',
+    legal: 'Mentions légales',
     cta: 'Découvrir ElevenLabs',
+    contact: 'Contact',
     cookie:
       'Nous utilisons des cookies pour l’analytics (GA4) et la performance. Vous pouvez les refuser à tout moment.',
     accept: 'Accepter',
   },
   de: {
     home: 'Start',
-    features: 'Plattform',
-    useCases: 'Einsatzfelder',
-    pricing: 'Pläne',
     blog: 'Blog',
-    legal: 'Rechtliches',
+    guide: 'Guide',
+    privacy: 'Datenschutz',
+    legal: 'Impressum',
     cta: 'ElevenLabs entdecken',
+    contact: 'Kontakt',
     cookie: 'Wir verwenden Cookies für Analytics (GA4) und Performance-Insights. Sie können jederzeit ablehnen.',
     accept: 'Akzeptieren',
   },
   es: {
     home: 'Inicio',
-    features: 'Plataforma',
-    useCases: 'Casos',
-    pricing: 'Planes',
     blog: 'Blog',
-    legal: 'Legal',
+    guide: 'Guía',
+    privacy: 'Privacidad',
+    legal: 'Aviso legal',
     cta: 'Explorar ElevenLabs',
+    contact: 'Contacto',
     cookie: 'Usamos cookies para analíticas (GA4) y rendimiento. Puedes desactivarlas cuando quieras.',
     accept: 'Aceptar',
   },
@@ -96,6 +98,11 @@ export function privacyPath(lang: Lang): string {
 
 export function legalNoticePath(lang: Lang): string {
   return lang === 'en' ? '/legal/legal-notice' : `/legal/legal-notice-${lang}`;
+}
+
+export function guidePath(lang: Lang): string {
+  const base = '/guide-elevenlabs';
+  return lang === 'en' ? base : `${base}-${lang}`;
 }
 
 export function playbookPath(lang: Lang): string {
