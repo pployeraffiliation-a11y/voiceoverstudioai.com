@@ -1,10 +1,6 @@
 [build]
-  publish = "."
-
-[[headers]]
-  for = "/styles.css"
-  [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
+  command = "npm run build"
+  publish = "out"
 
 [[redirects]]
   from = "http://www.voiceoverstudioai.com/*"

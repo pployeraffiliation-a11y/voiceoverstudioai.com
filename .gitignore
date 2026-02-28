@@ -5,12 +5,17 @@ Thumbs.db
 # Local build artifacts
 *.log
 
+# Node / Next.js
+node_modules/
+.next/
+out/
+
 # Large source videos (keep only curated demos)
-assets/videos/*.mp4
-!assets/videos/demo1.mp4
-!assets/videos/demo2.mp4
-!assets/videos/demo3.mp4
-!assets/videos/Studio 3.0 .mp4
+public/assets/videos/*.mp4
+!public/assets/videos/demo1.mp4
+!public/assets/videos/demo2.mp4
+!public/assets/videos/demo3.mp4
+!public/assets/videos/Studio 3.0 .mp4
 
 # SEO audit exports
 _ahrefs/

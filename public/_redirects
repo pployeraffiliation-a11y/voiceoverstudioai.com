@@ -1,0 +1,47 @@
+# Canonical home
+/index.html / 301!
+/index / 301!
+
+# Old .html -> canonical URLs
+/index-fr.html /index-fr 301!
+/index-de.html /index-de 301!
+/index-es.html /index-es 301!
+
+/blog.html /blog/ 301!
+/blog/index.html /blog/ 301!
+/blog/index /blog/ 301!
+/blog/index-fr.html /blog/index-fr 301!
+/blog/index-de.html /blog/index-de 301!
+/blog/index-es.html /blog/index-es 301!
+
+/blog/ai-voiceover-2026.html /blog/ai-voiceover-2026 301!
+/blog/ai-voiceover-2026-fr.html /blog/ai-voiceover-2026-fr 301!
+/blog/ai-voiceover-2026-de.html /blog/ai-voiceover-2026-de 301!
+/blog/ai-voiceover-2026-es.html /blog/ai-voiceover-2026-es 301!
+
+/legal/legal-notice.html /legal/legal-notice 301!
+/legal/legal-notice-fr.html /legal/legal-notice-fr 301!
+/legal/legal-notice-de.html /legal/legal-notice-de 301!
+/legal/legal-notice-es.html /legal/legal-notice-es 301!
+
+/legal/privacy.html /legal/privacy 301!
+/legal/privacy-fr.html /legal/privacy-fr 301!
+/legal/privacy-de.html /legal/privacy-de 301!
+/legal/privacy-es.html /legal/privacy-es 301!
+
+# Next export: serve pages for pretty URLs (avoid folder vs .html issues on static hosts)
+/index-fr /index-fr.html 200
+/index-fr/ /index-fr.html 200
+/index-de /index-de.html 200
+/index-de/ /index-de.html 200
+/index-es /index-es.html 200
+/index-es/ /index-es.html 200
+
+/blog /blog.html 200
+/blog/ /blog.html 200
+/blog/* /blog/:splat.html 200
+/blog/*/ /blog/:splat.html 200
+
+/legal/* /legal/:splat.html 200
+/legal/*/ /legal/:splat.html 200
+
