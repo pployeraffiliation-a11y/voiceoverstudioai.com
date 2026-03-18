@@ -1,0 +1,86 @@
+---
+title: "ElevenLabs Prompts (2026): prompt patterns that scale from tests to production"
+description: "How to write ElevenLabs prompts and direction notes in 2026: voice identity, glossary, block structure and common mistakes."
+canonical: "/blog/elevenlabs-prompts-2026"
+lang: "en"
+translationKey: "elevenlabs_prompts_2026"
+updatedAt: "2026-03-17"
+date: "2026-03-13"
+primaryKeyword: "elevenlabs prompts"
+quickAnswer:
+  - "A good prompt controls role, tone, pace and glossary priorities."
+  - "A reusable glossary is usually more valuable than a longer prompt."
+  - "Test three anchor lines before rendering long-form audio."
+internalLinks:
+  - href: "/guide-elevenlabs"
+    anchor: "ElevenLabs guide: demos and core workflows"
+  - href: "/blog/ai-voiceover-2026"
+    anchor: "2026 ElevenLabs Voiceover Playbook"
+  - href: "/blog/elevenlabs-dubbing-2026"
+    anchor: "AI dubbing workflow with ElevenLabs"
+  - href: "/blog/elevenlabs-pricing-2026"
+    anchor: "How to choose the right ElevenLabs plan"
+  - href: "/blog/"
+    anchor: "Back to the ElevenLabs hub"
+faq:
+  - q: "Are longer prompts better?"
+    a: "Not usually. Better prompts are clearer and more reusable, not just longer."
+  - q: "Why keep the glossary outside the prompt?"
+    a: "Because glossary control should stay stable across projects, while prompt notes explain the current direction."
+  - q: "How do you validate a prompt before a long render?"
+    a: "Test it on a short hook, one explanatory line and one CTA. If those three lines hold up, the long render is usually safer."
+---
+
+## What a good prompt actually controls
+
+A good prompt does not “make the voice good” by itself. It controls the parts that keep output stable:
+
+- role and audience
+- energy and pace
+- pronunciation priorities
+- block structure
+- what should stay consistent between renders
+
+That is why prompts work better when they are paired with a reusable glossary and a review habit.
+
+## A prompt template that scales
+
+Use a simple structure:
+
+```txt
+Role:
+Audience:
+Tone:
+Pace:
+Pronunciation or glossary notes:
+What must stay constant:
+```
+
+Keep it short. Prompts break when they become a wish list instead of a direction note.
+
+## Build a glossary, not just a one-off prompt
+
+If you repeat brand names, acronyms, or product terms, store them outside the prompt and reuse them everywhere.
+
+Your prompt should explain intent. Your glossary should protect consistency.
+
+That combination matters more than endlessly rewriting tone instructions.
+
+## Review before long-form rendering
+
+Before you render long-form audio, test three anchor lines:
+
+- the opening hook
+- one explanatory sentence
+- the CTA or final close
+
+If those three lines drift, the long render will drift too.
+
+## Common prompt mistakes
+
+- trying to force emotion line by line
+- hiding glossary items inside long paragraphs
+- changing direction language every time a different editor touches the file
+- rendering everything again instead of fixing the weak blocks only
+
+The best prompt system is boring. It is short, repeatable, and easy for the next person to use.

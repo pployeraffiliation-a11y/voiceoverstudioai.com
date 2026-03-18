@@ -2,18 +2,49 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { getAllDocMetas } from '@/lib/content';
 import type { Lang } from '@/lib/site';
-import { blogIndexPath, guidePath, legalNoticePath, playbookPath, privacyPath, SITE, UI_TRANSLATIONS } from '@/lib/site';
+import {
+  adsPath,
+  alternativesPath,
+  apiPath,
+  aboutPath,
+  blogIndexPath,
+  contactPath,
+  dubbingPath,
+  elearningPath,
+  guidePath,
+  homePath,
+  methodologyPath,
+  podcastsPath,
+  playbookPath,
+  pricingPath,
+  projectsPath,
+  promptsPath,
+  SITE,
+  sourcesPath,
+  UI_TRANSLATIONS,
+  youtubePath,
+} from '@/lib/site';
 
 export async function generateMetadata(): Promise<Metadata> {
+  const languages = Object.fromEntries(SITE.supportedLangs.map((l) => [l, homePath(l)]));
+  const ogImage = '/assets/images/capture-hero.png';
+
   return {
     title: SITE.brandName,
     description: 'Browse all pages: guides, blog posts, and legal documents.',
-    alternates: { canonical: '/' },
+    alternates: { canonical: homePath('en'), languages },
     openGraph: {
       type: 'website',
       title: SITE.brandName,
       description: 'Browse all pages: guides, blog posts, and legal documents.',
-      url: '/',
+      url: homePath('en'),
+      images: [{ url: ogImage }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: SITE.brandName,
+      description: 'Browse all pages: guides, blog posts, and legal documents.',
+      images: [ogImage],
     },
   };
 }
@@ -28,13 +59,21 @@ export default async function HomePage() {
     guidePath(lang),
     blogIndexPath(lang),
     playbookPath(lang),
-    privacyPath(lang),
-    legalNoticePath(lang),
+    pricingPath(lang),
+    promptsPath(lang),
+    dubbingPath(lang),
+    alternativesPath(lang),
+    projectsPath(lang),
+    apiPath(lang),
+    youtubePath(lang),
+    podcastsPath(lang),
+    elearningPath(lang),
+    adsPath(lang),
+    aboutPath(lang),
+    methodologyPath(lang),
+    sourcesPath(lang),
+    contactPath(lang),
   ].map((p) => p.replace(/\/+$/, ''));
-
-  const pinnedItems = pinned
-    .map((p) => pages.find((m) => (m.routePath.replace(/\/+$/, '') === p) || (m.canonical ?? '').replace(/\/+$/, '') === p))
-    .filter(Boolean);
 
   const otherItems = pages.filter((m) => !pinned.includes(m.routePath.replace(/\/+$/, '')));
 
@@ -42,18 +81,104 @@ export default async function HomePage() {
     <div className="stack">
       <section className="hero">
         <h1>{SITE.brandName}</h1>
-        <p>{t.home}: {t.guide}, {t.blog}, {t.privacy}, {t.legal}.</p>
+        <p>{t.home}: start with the guide, then use the blog hub for pricing, prompts, dubbing and comparisons.</p>
       </section>
 
-      <section className="card" aria-label="Pages">
-        <h2>Pages</h2>
+      <section className="card" aria-label="Start here">
+        <h2>Start here</h2>
         <ul className="list">
-          {pinnedItems.map((p) => (
-            <li key={p!.routePath}>
-              <Link href={p!.routePath}>{p!.title}</Link>
-              <div className="muted">{p!.description}</div>
-            </li>
-          ))}
+          <li>
+            <Link href={guidePath(lang)}>Guide</Link>
+            <div className="muted">Main pillar page for ElevenLabs demos, workflows and use cases.</div>
+          </li>
+          <li>
+            <Link href={playbookPath(lang)}>2026 Playbook</Link>
+            <div className="muted">Operational article for voiceover, dubbing, Projects and API workflows.</div>
+          </li>
+          <li>
+            <Link href={blogIndexPath(lang)}>Blog hub</Link>
+            <div className="muted">All cluster pages around pricing, prompts, dubbing and comparisons.</div>
+          </li>
+        </ul>
+      </section>
+
+      <section className="card" aria-label="ElevenLabs cluster">
+        <h2>ElevenLabs cluster</h2>
+        <ul className="list">
+          <li>
+            <Link href={pricingPath(lang)}>Pricing (2026)</Link>
+            <div className="muted">Choose the right plan for your workflow instead of buying volume blindly.</div>
+          </li>
+          <li>
+            <Link href={promptsPath(lang)}>Prompts (2026)</Link>
+            <div className="muted">Prompt patterns, glossary habits and anchor-line checks for stable direction.</div>
+          </li>
+          <li>
+            <Link href={dubbingPath(lang)}>Dubbing workflow (2026)</Link>
+            <div className="muted">Subtitle prep, first-minute review and multilingual QA.</div>
+          </li>
+          <li>
+            <Link href={alternativesPath(lang)}>Alternatives (2026)</Link>
+            <div className="muted">Compare other workflow models before you replace the stack.</div>
+          </li>
+          <li>
+            <Link href={projectsPath(lang)}>Projects (2026)</Link>
+            <div className="muted">Structure long-form production with reviewable blocks and cleaner approvals.</div>
+          </li>
+          <li>
+            <Link href={apiPath(lang)}>API (2026)</Link>
+            <div className="muted">Use batch or streaming with less drift and clearer operational rules.</div>
+          </li>
+        </ul>
+      </section>
+
+      <section className="card" aria-label="Use cases cluster">
+        <h2>Use cases</h2>
+        <ul className="list">
+          <li>
+            <Link href={youtubePath(lang)}>YouTube (2026)</Link>
+            <div className="muted">Voiceover, Shorts, dubbing and final QA for video publishing.</div>
+          </li>
+          <li>
+            <Link href={podcastsPath(lang)}>Podcasts (2026)</Link>
+            <div className="muted">Recurring segments, sponsor reads and listener-safe review habits.</div>
+          </li>
+          <li>
+            <Link href={elearningPath(lang)}>E-learning (2026)</Link>
+            <div className="muted">Modular lessons, glossary control and scalable multilingual delivery.</div>
+          </li>
+          <li>
+            <Link href={adsPath(lang)}>Ads (2026)</Link>
+            <div className="muted">Creative variants, hook testing and brand-safe approval loops.</div>
+          </li>
+        </ul>
+      </section>
+
+      <section className="card" aria-label="Transparency">
+        <h2>Transparency</h2>
+        <ul className="list">
+          <li>
+            <Link href={aboutPath(lang)}>{t.about}</Link>
+            <div className="muted">Affiliate disclosure, updates and editorial scope.</div>
+          </li>
+          <li>
+            <Link href={methodologyPath(lang)}>{t.methodology}</Link>
+            <div className="muted">How pages are reviewed, updated and checked.</div>
+          </li>
+          <li>
+            <Link href={sourcesPath(lang)}>{t.sources}</Link>
+            <div className="muted">Official sources and verification references.</div>
+          </li>
+          <li>
+            <Link href={contactPath(lang)}>{t.contact}</Link>
+            <div className="muted">Corrections, questions and partnership contact.</div>
+          </li>
+        </ul>
+      </section>
+
+      <section className="card" aria-label="All pages">
+        <h2>All pages</h2>
+        <ul className="list">
           {otherItems.map((p) => (
             <li key={p.routePath}>
               <Link href={p.routePath}>{p.title}</Link>

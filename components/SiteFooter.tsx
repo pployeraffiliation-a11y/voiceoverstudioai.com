@@ -2,7 +2,18 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { blogIndexPath, getLangFromPathname, legalNoticePath, privacyPath, SITE, UI_TRANSLATIONS } from '@/lib/site';
+import {
+  aboutPath,
+  blogIndexPath,
+  contactPath,
+  getLangFromPathname,
+  legalNoticePath,
+  methodologyPath,
+  privacyPath,
+  SITE,
+  sourcesPath,
+  UI_TRANSLATIONS,
+} from '@/lib/site';
 
 export function SiteFooter() {
   const pathname = usePathname() ?? '/';
@@ -17,9 +28,12 @@ export function SiteFooter() {
         </div>
         <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
           <Link href={blogIndexPath(lang)}>{t.blog}</Link>
+          <Link href={aboutPath(lang)}>{t.about}</Link>
+          <Link href={methodologyPath(lang)}>{t.methodology}</Link>
+          <Link href={sourcesPath(lang)}>{t.sources}</Link>
           <Link href={privacyPath(lang)}>{t.privacy}</Link>
           <Link href={legalNoticePath(lang)}>{t.legal}</Link>
-          <a href={`mailto:${SITE.contactEmail}`}>{t.contact}</a>
+          <Link href={contactPath(lang)}>{t.contact}</Link>
         </div>
       </div>
     </footer>

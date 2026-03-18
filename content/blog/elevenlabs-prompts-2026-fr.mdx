@@ -1,0 +1,86 @@
+---
+title: "Prompts ElevenLabs (2026) : des structures qui tiennent du test à la prod"
+description: "Comment écrire des prompts et notes de direction sur ElevenLabs en 2026 : identité vocale, glossaire, blocs de script et erreurs fréquentes."
+canonical: "/blog/elevenlabs-prompts-2026-fr"
+lang: "fr"
+translationKey: "elevenlabs_prompts_2026"
+updatedAt: "2026-03-17"
+date: "2026-03-13"
+primaryKeyword: "prompts elevenlabs"
+quickAnswer:
+  - "Un bon prompt contrôle le rôle, le ton, le rythme et les priorités de glossaire."
+  - "Un glossaire réutilisable vaut souvent plus qu’un prompt plus long."
+  - "Il faut valider trois phrases d’ancrage avant un rendu long."
+internalLinks:
+  - href: "/guide-elevenlabs-fr"
+    anchor: "Guide ElevenLabs : démos et workflows clés"
+  - href: "/blog/ai-voiceover-2026-fr"
+    anchor: "Playbook 2026 ElevenLabs"
+  - href: "/blog/elevenlabs-dubbing-2026-fr"
+    anchor: "Workflow de doublage IA avec ElevenLabs"
+  - href: "/blog/elevenlabs-pricing-2026-fr"
+    anchor: "Comment choisir la bonne formule ElevenLabs"
+  - href: "/blog/index-fr"
+    anchor: "Retour au hub ElevenLabs"
+faq:
+  - q: "Les prompts plus longs sont-ils meilleurs ?"
+    a: "Pas en général. Les meilleurs prompts sont surtout plus clairs, plus stables et plus réutilisables."
+  - q: "Pourquoi garder le glossaire hors du prompt ?"
+    a: "Parce que le glossaire doit rester stable entre projets, alors que le prompt sert surtout à décrire l’intention du rendu actuel."
+  - q: "Comment valider un prompt avant un rendu long ?"
+    a: "En le testant sur un hook court, une phrase explicative et un CTA. Si ces trois lignes tiennent, le rendu long sera généralement plus sûr."
+---
+
+## Ce qu’un bon prompt contrôle vraiment
+
+Un bon prompt ne “rend pas la voix bonne” à lui seul. Il contrôle les points qui gardent une sortie stable :
+
+- le rôle et l’audience
+- l’énergie et le rythme
+- les priorités de prononciation
+- la structure des blocs
+- ce qui doit rester constant d’un rendu à l’autre
+
+C’est pour cela qu’un prompt fonctionne mieux avec un glossaire réutilisable et une vraie habitude de relecture.
+
+## Un template de prompt qui scale
+
+Utilisez une structure simple :
+
+```txt
+Rôle :
+Audience :
+Ton :
+Rythme :
+Notes de prononciation ou glossaire :
+Ce qui doit rester constant :
+```
+
+Gardez-le court. Les prompts cassent quand ils deviennent une liste de souhaits au lieu d’une note de direction.
+
+## Construire un glossaire, pas un prompt jetable
+
+Si vous répétez des noms de marque, acronymes ou termes produit, stockez-les hors du prompt et réutilisez-les partout.
+
+Le prompt doit expliquer l’intention. Le glossaire doit protéger la cohérence.
+
+Cette combinaison vaut mieux que réécrire des consignes de ton à l’infini.
+
+## Valider avant un rendu long
+
+Avant de lancer un audio long, testez trois phrases d’ancrage :
+
+- le hook d’ouverture
+- une phrase explicative
+- le CTA ou la fermeture
+
+Si ces trois phrases dérivent, le rendu long dérivera aussi.
+
+## Erreurs de prompt les plus fréquentes
+
+- forcer l’émotion ligne par ligne
+- cacher les termes du glossaire dans de longs paragraphes
+- changer la formulation des consignes à chaque nouvel éditeur
+- tout re-rendre au lieu de corriger seulement les blocs faibles
+
+Le meilleur système de prompt est souvent le plus sobre : court, répétable et réutilisable par la personne suivante.

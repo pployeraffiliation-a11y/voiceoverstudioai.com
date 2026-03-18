@@ -1,0 +1,84 @@
+---
+title: "ElevenLabs Prompts (2026): Prompt-Muster vom Test bis zur Produktion"
+description: "Wie ihr 2026 bessere ElevenLabs Prompts und Direction Notes schreibt: Voice-Identität, Glossar, Blockstruktur und typische Fehler."
+canonical: "/blog/elevenlabs-prompts-2026-de"
+lang: "de"
+translationKey: "elevenlabs_prompts_2026"
+updatedAt: "2026-03-17"
+date: "2026-03-13"
+primaryKeyword: "elevenlabs prompts"
+quickAnswer:
+  - "Ein guter Prompt steuert Rolle, Ton, Tempo und Glossar-Prioritäten."
+  - "Ein wiederverwendbares Glossar ist meist wertvoller als ein längerer Prompt."
+  - "Vor Long-form sollten drei Anchor-Lines getestet werden."
+internalLinks:
+  - href: "/guide-elevenlabs-de"
+    anchor: "ElevenLabs Guide: Demos und Kern-Workflows"
+  - href: "/blog/ai-voiceover-2026-de"
+    anchor: "ElevenLabs Playbook 2026"
+  - href: "/blog/elevenlabs-dubbing-2026-de"
+    anchor: "AI-Dubbing-Workflow mit ElevenLabs"
+  - href: "/blog/elevenlabs-pricing-2026-de"
+    anchor: "So wählt ihr den passenden ElevenLabs Plan"
+  - href: "/blog/index-de"
+    anchor: "Zurück zum ElevenLabs Hub"
+faq:
+  - q: "Sind längere Prompts besser?"
+    a: "Meist nicht. Gute Prompts sind klarer und wiederverwendbarer, nicht einfach länger."
+  - q: "Warum das Glossar außerhalb des Prompts halten?"
+    a: "Weil Glossar-Regeln projektübergreifend stabil bleiben sollten, während der Prompt die aktuelle Regie erklärt."
+  - q: "Wie validiert man einen Prompt vor Long-form?"
+    a: "Mit drei Testzeilen: Hook, Erklärsatz und CTA. Wenn diese drei halten, ist der Long-form Render deutlich sicherer."
+---
+
+## Was ein guter Prompt wirklich steuert
+
+Ein guter Prompt macht die Stimme nicht “magisch gut”. Er steuert die Teile, die den Output stabil halten:
+
+- Rolle und Publikum
+- Energie und Tempo
+- Prioritäten bei der Aussprache
+- Struktur der Blöcke
+- was zwischen zwei Rendern gleich bleiben muss
+
+Darum funktionieren Prompts am besten zusammen mit einem wiederverwendbaren Glossar und einer klaren Review-Routine.
+
+## Ein Prompt-Template, das skaliert
+
+Nutzt eine einfache Struktur:
+
+```txt
+Rolle:
+Zielpublikum:
+Ton:
+Tempo:
+Aussprache- oder Glossarhinweise:
+Was konstant bleiben muss:
+```
+
+Haltet es kurz. Prompts brechen, wenn sie zur Wunschliste statt zur Regie-Notiz werden.
+
+## Ein Glossar bauen, nicht nur einen Einmal-Prompt
+
+Wenn Marken, Akronyme oder Produktbegriffe wiederkehren, lagert sie aus dem Prompt aus und verwendet sie überall.
+
+Der Prompt erklärt die Intention. Das Glossar schützt die Konsistenz.
+
+## Vor Long-form erst validieren
+
+Bevor ihr längeres Audio rendert, testet drei Anchor-Lines:
+
+- den Opening Hook
+- einen erklärenden Satz
+- den CTA oder Schluss
+
+Wenn diese drei Lines driften, driftet auch der lange Render.
+
+## Häufige Prompt-Fehler
+
+- Emotion Zeile für Zeile erzwingen
+- Glossar-Begriffe in langen Absätzen verstecken
+- die Sprache der Regiehinweise dauernd ändern
+- alles neu rendern statt nur die schwachen Blöcke zu korrigieren
+
+Das beste Prompt-System ist meist langweilig: kurz, wiederholbar und für die nächste Person sofort nutzbar.

@@ -15,6 +15,9 @@ export const UI_TRANSLATIONS: Record<
     home: string;
     guide: string;
     blog: string;
+    about: string;
+    methodology: string;
+    sources: string;
     privacy: string;
     legal: string;
     cta: string;
@@ -27,6 +30,9 @@ export const UI_TRANSLATIONS: Record<
     home: 'Home',
     blog: 'Blog',
     guide: 'Guide',
+    about: 'About',
+    methodology: 'Methodology',
+    sources: 'Sources',
     privacy: 'Privacy',
     legal: 'Legal notice',
     cta: 'Join ElevenLabs',
@@ -38,6 +44,9 @@ export const UI_TRANSLATIONS: Record<
     home: 'Accueil',
     blog: 'Blog',
     guide: 'Guide',
+    about: 'À propos',
+    methodology: 'Méthodologie',
+    sources: 'Sources',
     privacy: 'Confidentialité',
     legal: 'Mentions légales',
     cta: 'Découvrir ElevenLabs',
@@ -50,6 +59,9 @@ export const UI_TRANSLATIONS: Record<
     home: 'Start',
     blog: 'Blog',
     guide: 'Guide',
+    about: 'Über uns',
+    methodology: 'Methodik',
+    sources: 'Quellen',
     privacy: 'Datenschutz',
     legal: 'Impressum',
     cta: 'ElevenLabs entdecken',
@@ -61,6 +73,9 @@ export const UI_TRANSLATIONS: Record<
     home: 'Inicio',
     blog: 'Blog',
     guide: 'Guía',
+    about: 'Acerca de',
+    methodology: 'Metodología',
+    sources: 'Fuentes',
     privacy: 'Privacidad',
     legal: 'Aviso legal',
     cta: 'Explorar ElevenLabs',
@@ -107,6 +122,76 @@ export function guidePath(lang: Lang): string {
 
 export function playbookPath(lang: Lang): string {
   const base = '/blog/ai-voiceover-2026';
+  return lang === 'en' ? base : `${base}-${lang}`;
+}
+
+export function pricingPath(lang: Lang): string {
+  const base = '/blog/elevenlabs-pricing-2026';
+  return lang === 'en' ? base : `${base}-${lang}`;
+}
+
+export function promptsPath(lang: Lang): string {
+  const base = '/blog/elevenlabs-prompts-2026';
+  return lang === 'en' ? base : `${base}-${lang}`;
+}
+
+export function dubbingPath(lang: Lang): string {
+  const base = '/blog/elevenlabs-dubbing-2026';
+  return lang === 'en' ? base : `${base}-${lang}`;
+}
+
+export function alternativesPath(lang: Lang): string {
+  const base = '/blog/elevenlabs-alternatives-2026';
+  return lang === 'en' ? base : `${base}-${lang}`;
+}
+
+export function projectsPath(lang: Lang): string {
+  const base = '/blog/elevenlabs-projects-2026';
+  return lang === 'en' ? base : `${base}-${lang}`;
+}
+
+export function apiPath(lang: Lang): string {
+  const base = '/blog/elevenlabs-api-2026';
+  return lang === 'en' ? base : `${base}-${lang}`;
+}
+
+export function youtubePath(lang: Lang): string {
+  const base = '/blog/elevenlabs-for-youtube-2026';
+  return lang === 'en' ? base : `${base}-${lang}`;
+}
+
+export function podcastsPath(lang: Lang): string {
+  const base = '/blog/elevenlabs-for-podcasts-2026';
+  return lang === 'en' ? base : `${base}-${lang}`;
+}
+
+export function elearningPath(lang: Lang): string {
+  const base = '/blog/elevenlabs-for-elearning-2026';
+  return lang === 'en' ? base : `${base}-${lang}`;
+}
+
+export function adsPath(lang: Lang): string {
+  const base = '/blog/elevenlabs-for-ads-2026';
+  return lang === 'en' ? base : `${base}-${lang}`;
+}
+
+export function aboutPath(lang: Lang): string {
+  const base = '/about';
+  return lang === 'en' ? base : `${base}-${lang}`;
+}
+
+export function methodologyPath(lang: Lang): string {
+  const base = '/methodology';
+  return lang === 'en' ? base : `${base}-${lang}`;
+}
+
+export function sourcesPath(lang: Lang): string {
+  const base = '/sources';
+  return lang === 'en' ? base : `${base}-${lang}`;
+}
+
+export function contactPath(lang: Lang): string {
+  const base = '/contact';
   return lang === 'en' ? base : `${base}-${lang}`;
 }
 
