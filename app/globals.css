@@ -517,6 +517,7 @@ blockquote {
   padding: 20px;
   border-radius: var(--radius);
   border: 1px solid var(--border);
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .hero-tablet {
