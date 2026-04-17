@@ -2,6 +2,7 @@ export const SITE = {
   baseUrl: 'https://voiceoverstudioai.com',
   domain: 'voiceoverstudioai.com',
   brandName: 'VoiceOverStudioAI',
+  ga4Id: 'G-ZVBSC02R2X',
   affiliateLink: 'https://try.elevenlabs.io/ngxkdu61n0np',
   contactEmail: 'p.ployer.affiliation@gmail.com',
   supportedLangs: ['en', 'fr', 'de', 'es'] as const,

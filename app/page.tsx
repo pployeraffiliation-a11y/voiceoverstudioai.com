@@ -28,22 +28,25 @@ import {
 export async function generateMetadata(): Promise<Metadata> {
   const languages = Object.fromEntries(SITE.supportedLangs.map((l) => [l, homePath(l)]));
   const ogImage = '/assets/images/capture-hero.png';
+  const title = `${SITE.brandName} — ElevenLabs voiceover & dubbing guides (2026)`;
+  const description =
+    'Practical ElevenLabs workflows for AI voiceovers: pricing, prompts, dubbing, Projects, and API (updated for 2026).';
 
   return {
-    title: SITE.brandName,
-    description: 'Browse all pages: guides, blog posts, and legal documents.',
+    title,
+    description,
     alternates: { canonical: homePath('en'), languages },
     openGraph: {
       type: 'website',
-      title: SITE.brandName,
-      description: 'Browse all pages: guides, blog posts, and legal documents.',
+      title,
+      description,
       url: homePath('en'),
       images: [{ url: ogImage }],
     },
     twitter: {
       card: 'summary_large_image',
-      title: SITE.brandName,
-      description: 'Browse all pages: guides, blog posts, and legal documents.',
+      title,
+      description,
       images: [ogImage],
     },
   };

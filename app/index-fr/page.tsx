@@ -29,20 +29,20 @@ const HOME_LANGUAGES = Object.fromEntries(SITE.supportedLangs.map((l) => [l, hom
 const OG_IMAGE = '/assets/images/capture-hero.png';
 
 export const metadata: Metadata = {
-  title: `${SITE.brandName} — Pages`,
-  description: 'Accédez à toutes les pages : guide, blog et pages légales.',
+  title: `${SITE.brandName} — Guides ElevenLabs (2026)`,
+  description: 'Guides et workflows ElevenLabs (2026) : prix, prompts, dubbing, Projects, API, YouTube, podcasts et e-learning.',
   alternates: { canonical: homePath('fr'), languages: HOME_LANGUAGES },
   openGraph: {
     type: 'website',
-    title: `${SITE.brandName} — Pages`,
-    description: 'Accédez à toutes les pages : guide, blog et pages légales.',
+    title: `${SITE.brandName} — Guides ElevenLabs (2026)`,
+    description: 'Guides et workflows ElevenLabs (2026) : prix, prompts, dubbing, Projects, API, YouTube, podcasts et e-learning.',
     url: homePath('fr'),
     images: [{ url: OG_IMAGE }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${SITE.brandName} — Pages`,
-    description: 'Accédez à toutes les pages : guide, blog et pages légales.',
+    title: `${SITE.brandName} — Guides ElevenLabs (2026)`,
+    description: 'Guides et workflows ElevenLabs (2026) : prix, prompts, dubbing, Projects, API, YouTube, podcasts et e-learning.',
     images: [OG_IMAGE],
   },
 };
