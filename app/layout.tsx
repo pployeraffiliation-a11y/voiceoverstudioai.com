@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import { SITE } from '@/lib/site';
+import { CookieBanner } from '@/components/CookieBanner';
 import { SiteFooter } from '@/components/SiteFooter';
 import { SiteHeader } from '@/components/SiteHeader';
 import { LangHtmlUpdater } from '@/components/LangHtmlUpdater';
@@ -49,6 +50,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SiteHeader />
         <main className="container">{children}</main>
         <SiteFooter />
+        <CookieBanner />
       </body>
     </html>
   );
