@@ -1,10 +1,13 @@
 import type { Metadata, Viewport } from 'next';
+import React from 'react';
 import './globals.css';
 import { SITE } from '@/lib/site';
 import { CookieBanner } from '@/components/CookieBanner';
 import { SiteFooter } from '@/components/SiteFooter';
 import { SiteHeader } from '@/components/SiteHeader';
 import { LangHtmlUpdater } from '@/components/LangHtmlUpdater';
+
+const IMPACT_SITE_VERIFICATION_TOKEN = '15b70ab1-30d1-4f04-aa80-2bfe723e8084';
 
 export const viewport: Viewport = {
   themeColor: '#ffffff',
@@ -46,6 +49,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
+        {React.createElement('meta', {
+          name: 'impact-site-verification',
+          value: IMPACT_SITE_VERIFICATION_TOKEN,
+        } as any)}
         <LangHtmlUpdater />
         <SiteHeader />
         <main className="container">{children}</main>
