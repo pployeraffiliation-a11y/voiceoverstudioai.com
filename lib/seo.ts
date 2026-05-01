@@ -43,6 +43,8 @@ export function getOpenGraphImage(meta: DocMeta): string {
   if (meta.translationKey === 'blog_index' || meta.translationKey === 'ai_voiceover_2026') {
     return '/assets/images/capture-dashboard.png';
   }
+  if (meta.translationKey?.startsWith('pictory_ai_')) {
+    return '/assets/images/pictory-ai-video-2-0-1200.png';
+  }
   return '/assets/images/voiceoverstudioai-logo.png';
 }
-

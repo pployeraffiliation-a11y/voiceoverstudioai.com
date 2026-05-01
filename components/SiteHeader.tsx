@@ -32,7 +32,7 @@ export function SiteHeader() {
             <Link href={blog}>{t.blog}</Link>
             <Link href={privacy}>{t.privacy}</Link>
             <Link href={legal}>{t.legal}</Link>
-            <a className="cta-btn" data-cta="" href={SITE.affiliateLink} rel="noopener noreferrer" target="_blank">
+            <a className="cta-btn" data-cta="" href={SITE.affiliateLink} rel="noopener noreferrer sponsored" target="_blank">
               {t.cta}
             </a>
           </nav>

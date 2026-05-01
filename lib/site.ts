@@ -4,6 +4,7 @@ export const SITE = {
   brandName: 'VoiceOverStudioAI',
   ga4Id: 'G-ZVBSC02R2X',
   affiliateLink: 'https://try.elevenlabs.io/ngxkdu61n0np',
+  pictoryAffiliateLink: 'https://pictory.ai?ref=voiceoverstudioai',
   contactEmail: 'p.ployer.affiliation@gmail.com',
   supportedLangs: ['en', 'fr', 'de', 'es'] as const,
 };
@@ -176,6 +177,32 @@ export function adsPath(lang: Lang): string {
   return lang === 'en' ? base : `${base}-${lang}`;
 }
 
+export function pictoryAvisPath(lang: Lang): string {
+  if (lang === 'fr') return '/blog/pictory-ai-avis-2026-fr';
+  if (lang === 'es') return '/blog/pictory-ai-opiniones-2026-es';
+  if (lang === 'de') return '/blog/pictory-ai-erfahrungen-2026-de';
+  return '/blog/pictory-ai-review-2026';
+}
+
+export function pictoryPricingPath(lang: Lang): string {
+  if (lang === 'fr') return '/blog/pictory-ai-prix-2026-fr';
+  if (lang === 'es') return '/blog/pictory-ai-precios-2026-es';
+  if (lang === 'de') return '/blog/pictory-ai-preise-2026-de';
+  return '/blog/pictory-ai-pricing-2026';
+}
+
+export function pictoryYoutubePath(lang: Lang): string {
+  const base = '/blog/pictory-ai-youtube-2026';
+  return lang === 'en' ? base : `${base}-${lang}`;
+}
+
+export function pictoryCreditsPath(lang: Lang): string {
+  if (lang === 'fr') return '/blog/pictory-ai-credits-2026-fr';
+  if (lang === 'es') return '/blog/pictory-ai-creditos-2026-es';
+  if (lang === 'de') return '/blog/pictory-ai-credits-2026-de';
+  return '/blog/pictory-ai-credits-2026';
+}
+
 export function aboutPath(lang: Lang): string {
   const base = '/about';
   return lang === 'en' ? base : `${base}-${lang}`;
@@ -223,6 +250,33 @@ export function localizedUrl(pathname: string, lang: Lang): string {
 
   if (base === '/blog/ai-voiceover-2026') {
     return targetLang === 'en' ? base : `${base}-${targetLang}`;
+  }
+
+  if (base.startsWith('/blog/pictory-ai-')) {
+    const normalized = path.replace(/(-fr|-de|-es)$/, '');
+    const avisPaths = [
+      '/blog/pictory-ai-avis-2026',
+      '/blog/pictory-ai-review-2026',
+      '/blog/pictory-ai-opiniones-2026',
+      '/blog/pictory-ai-erfahrungen-2026',
+    ];
+    const pricingPaths = [
+      '/blog/pictory-ai-prix-2026',
+      '/blog/pictory-ai-pricing-2026',
+      '/blog/pictory-ai-precios-2026',
+      '/blog/pictory-ai-preise-2026',
+    ];
+    const creditsPaths = [
+      '/blog/pictory-ai-credits-2026',
+      '/blog/pictory-ai-creditos-2026',
+    ];
+
+    if (avisPaths.includes(normalized)) return pictoryAvisPath(targetLang);
+    if (pricingPaths.includes(normalized)) return pictoryPricingPath(targetLang);
+    if (base === '/blog/pictory-ai-youtube-2026') return pictoryYoutubePath(targetLang);
+    if (creditsPaths.includes(normalized)) return pictoryCreditsPath(targetLang);
+
+    return blogIndexPath(targetLang);
   }
 
   if (base === '/legal/privacy' || base === '/legal/legal-notice') {

@@ -14,6 +14,10 @@ import {
   guidePath,
   homePath,
   methodologyPath,
+  pictoryAvisPath,
+  pictoryCreditsPath,
+  pictoryPricingPath,
+  pictoryYoutubePath,
   podcastsPath,
   playbookPath,
   pricingPath,
@@ -28,9 +32,9 @@ import {
 export async function generateMetadata(): Promise<Metadata> {
   const languages = Object.fromEntries(SITE.supportedLangs.map((l) => [l, homePath(l)]));
   const ogImage = '/assets/images/capture-hero.png';
-  const title = `${SITE.brandName} — ElevenLabs voiceover & dubbing guides (2026)`;
+  const title = `${SITE.brandName} — AI voice, video and Pictory guides (2026)`;
   const description =
-    'Practical ElevenLabs workflows for AI voiceovers: pricing, prompts, dubbing, Projects, and API (updated for 2026).';
+    'Practical AI workflows for ElevenLabs voiceovers and Pictory AI video production: pricing, prompts, dubbing, YouTube, captions and AI Credits.';
 
   return {
     title,
@@ -72,6 +76,10 @@ export default async function HomePage() {
     podcastsPath(lang),
     elearningPath(lang),
     adsPath(lang),
+    pictoryAvisPath(lang),
+    pictoryPricingPath(lang),
+    pictoryYoutubePath(lang),
+    pictoryCreditsPath(lang),
     aboutPath(lang),
     methodologyPath(lang),
     sourcesPath(lang),
@@ -84,7 +92,7 @@ export default async function HomePage() {
     <div className="stack">
       <section className="hero">
         <h1>{SITE.brandName}</h1>
-        <p>{t.home}: start with the guide, then use the blog hub for pricing, prompts, dubbing and comparisons.</p>
+        <p>{t.home}: practical workflows for AI voiceovers, dubbing, AI video, captions and YouTube publishing.</p>
       </section>
 
       <section className="card" aria-label="Start here">
@@ -153,6 +161,28 @@ export default async function HomePage() {
           <li>
             <Link href={adsPath(lang)}>Ads (2026)</Link>
             <div className="muted">Creative variants, hook testing and brand-safe approval loops.</div>
+          </li>
+        </ul>
+      </section>
+
+      <section className="card" aria-label="Pictory AI cluster">
+        <h2>Pictory AI cluster</h2>
+        <ul className="list">
+          <li>
+            <Link href={pictoryAvisPath(lang)}>Pictory AI review (2026)</Link>
+            <div className="muted">Full test: text-to-video, captions, avatars, AI voices, limits and workflow.</div>
+          </li>
+          <li>
+            <Link href={pictoryPricingPath(lang)}>Pictory AI pricing (2026)</Link>
+            <div className="muted">Compare Starter, Professional, Team, video minutes, brand kits and AI Credits.</div>
+          </li>
+          <li>
+            <Link href={pictoryYoutubePath(lang)}>Pictory AI for YouTube (2026)</Link>
+            <div className="muted">Turn scripts, articles and long videos into YouTube videos, Shorts and captions.</div>
+          </li>
+          <li>
+            <Link href={pictoryCreditsPath(lang)}>Pictory AI Credits (2026)</Link>
+            <div className="muted">Understand generative usage for images, video, avatars and add-on packs.</div>
           </li>
         </ul>
       </section>

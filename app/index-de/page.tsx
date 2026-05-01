@@ -14,6 +14,10 @@ import {
   guidePath,
   homePath,
   methodologyPath,
+  pictoryAvisPath,
+  pictoryCreditsPath,
+  pictoryPricingPath,
+  pictoryYoutubePath,
   podcastsPath,
   playbookPath,
   pricingPath,
@@ -29,20 +33,20 @@ const HOME_LANGUAGES = Object.fromEntries(SITE.supportedLangs.map((l) => [l, hom
 const OG_IMAGE = '/assets/images/capture-hero.png';
 
 export const metadata: Metadata = {
-  title: `${SITE.brandName} — ElevenLabs Guides (2026)`,
-  description: 'Praktische ElevenLabs Guides (2026): Preise, Prompts, Dubbing, Projects und API-Workflows.',
+  title: `${SITE.brandName} — AI Voice, Video und Pictory Guides (2026)`,
+  description: 'Praktische AI-Workflows 2026: ElevenLabs für Voice und Dubbing, Pictory AI für Video, Preise, Prompts, YouTube, Captions und AI Credits.',
   alternates: { canonical: homePath('de'), languages: HOME_LANGUAGES },
   openGraph: {
     type: 'website',
-    title: `${SITE.brandName} — ElevenLabs Guides (2026)`,
-    description: 'Praktische ElevenLabs Guides (2026): Preise, Prompts, Dubbing, Projects und API-Workflows.',
+    title: `${SITE.brandName} — AI Voice, Video und Pictory Guides (2026)`,
+    description: 'Praktische AI-Workflows 2026: ElevenLabs für Voice und Dubbing, Pictory AI für Video, Preise, Prompts, YouTube, Captions und AI Credits.',
     url: homePath('de'),
     images: [{ url: OG_IMAGE }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${SITE.brandName} — ElevenLabs Guides (2026)`,
-    description: 'Praktische ElevenLabs Guides (2026): Preise, Prompts, Dubbing, Projects und API-Workflows.',
+    title: `${SITE.brandName} — AI Voice, Video und Pictory Guides (2026)`,
+    description: 'Praktische AI-Workflows 2026: ElevenLabs für Voice und Dubbing, Pictory AI für Video, Preise, Prompts, YouTube, Captions und AI Credits.',
     images: [OG_IMAGE],
   },
 };
@@ -67,6 +71,10 @@ export default async function HomePageDe() {
     podcastsPath(lang),
     elearningPath(lang),
     adsPath(lang),
+    pictoryAvisPath(lang),
+    pictoryPricingPath(lang),
+    pictoryYoutubePath(lang),
+    pictoryCreditsPath(lang),
     aboutPath(lang),
     methodologyPath(lang),
     sourcesPath(lang),
@@ -79,7 +87,7 @@ export default async function HomePageDe() {
     <div className="stack">
       <section className="hero">
         <h1>{SITE.brandName}</h1>
-        <p>Startet mit dem Guide und nutzt danach den Blog-Hub für Preise, Prompts, Dubbing-Workflows und Vergleiche.</p>
+        <p>Praktische Guides für Voiceover, Dubbing, AI Video, Captions und YouTube-Workflows mit ElevenLabs und Pictory AI.</p>
       </section>
 
       <section className="card" aria-label="Start here">
@@ -148,6 +156,28 @@ export default async function HomePageDe() {
           <li>
             <Link href={adsPath(lang)}>Ads (2026)</Link>
             <div className="muted">Creative-Varianten, Hook-Tests und brand-sichere Freigaben.</div>
+          </li>
+        </ul>
+      </section>
+
+      <section className="card" aria-label="Pictory AI Cluster">
+        <h2>Pictory AI Cluster</h2>
+        <ul className="list">
+          <li>
+            <Link href={pictoryAvisPath(lang)}>Pictory AI Erfahrungen (2026)</Link>
+            <div className="muted">Test: Text-to-Video, Captions, Avatare, AI Voices, Grenzen und Workflow.</div>
+          </li>
+          <li>
+            <Link href={pictoryPricingPath(lang)}>Pictory AI Preise (2026)</Link>
+            <div className="muted">Starter, Professional, Team, Videominuten, Brand Kits und AI Credits vergleichen.</div>
+          </li>
+          <li>
+            <Link href={pictoryYoutubePath(lang)}>Pictory AI für YouTube (2026)</Link>
+            <div className="muted">Skripte, Artikel und lange Videos in YouTube, Shorts und Captions verwandeln.</div>
+          </li>
+          <li>
+            <Link href={pictoryCreditsPath(lang)}>Pictory AI Credits (2026)</Link>
+            <div className="muted">Generativen Verbrauch für Bilder, Video, Avatare und Packs verstehen.</div>
           </li>
         </ul>
       </section>

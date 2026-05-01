@@ -14,6 +14,10 @@ import {
   guidePath,
   homePath,
   methodologyPath,
+  pictoryAvisPath,
+  pictoryCreditsPath,
+  pictoryPricingPath,
+  pictoryYoutubePath,
   podcastsPath,
   playbookPath,
   pricingPath,
@@ -29,20 +33,20 @@ const HOME_LANGUAGES = Object.fromEntries(SITE.supportedLangs.map((l) => [l, hom
 const OG_IMAGE = '/assets/images/capture-hero.png';
 
 export const metadata: Metadata = {
-  title: `${SITE.brandName} — Guías de ElevenLabs (2026)`,
-  description: 'Guías y flujos de trabajo de ElevenLabs (2026): precios, prompts, doblaje, Projects y API.',
+  title: `${SITE.brandName} — Guías IA de voz, vídeo y Pictory (2026)`,
+  description: 'Guías IA 2026: ElevenLabs para voz y doblaje, Pictory AI para vídeo, precios, prompts, YouTube, subtítulos y AI Credits.',
   alternates: { canonical: homePath('es'), languages: HOME_LANGUAGES },
   openGraph: {
     type: 'website',
-    title: `${SITE.brandName} — Guías de ElevenLabs (2026)`,
-    description: 'Guías y flujos de trabajo de ElevenLabs (2026): precios, prompts, doblaje, Projects y API.',
+    title: `${SITE.brandName} — Guías IA de voz, vídeo y Pictory (2026)`,
+    description: 'Guías IA 2026: ElevenLabs para voz y doblaje, Pictory AI para vídeo, precios, prompts, YouTube, subtítulos y AI Credits.',
     url: homePath('es'),
     images: [{ url: OG_IMAGE }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${SITE.brandName} — Guías de ElevenLabs (2026)`,
-    description: 'Guías y flujos de trabajo de ElevenLabs (2026): precios, prompts, doblaje, Projects y API.',
+    title: `${SITE.brandName} — Guías IA de voz, vídeo y Pictory (2026)`,
+    description: 'Guías IA 2026: ElevenLabs para voz y doblaje, Pictory AI para vídeo, precios, prompts, YouTube, subtítulos y AI Credits.',
     images: [OG_IMAGE],
   },
 };
@@ -67,6 +71,10 @@ export default async function HomePageEs() {
     podcastsPath(lang),
     elearningPath(lang),
     adsPath(lang),
+    pictoryAvisPath(lang),
+    pictoryPricingPath(lang),
+    pictoryYoutubePath(lang),
+    pictoryCreditsPath(lang),
     aboutPath(lang),
     methodologyPath(lang),
     sourcesPath(lang),
@@ -79,7 +87,7 @@ export default async function HomePageEs() {
     <div className="stack">
       <section className="hero">
         <h1>{SITE.brandName}</h1>
-        <p>Empieza por la guía y usa después el hub del blog para precios, prompts, workflows de doblaje y comparativas.</p>
+        <p>Guías prácticas para producir locuciones, doblaje, vídeo IA, subtítulos y workflows de YouTube con ElevenLabs y Pictory AI.</p>
       </section>
 
       <section className="card" aria-label="Start here">
@@ -148,6 +156,28 @@ export default async function HomePageEs() {
           <li>
             <Link href={adsPath(lang)}>Ads (2026)</Link>
             <div className="muted">Variantes creativas, tests de hook y aprobación segura para marca.</div>
+          </li>
+        </ul>
+      </section>
+
+      <section className="card" aria-label="Cluster Pictory AI">
+        <h2>Cluster Pictory AI</h2>
+        <ul className="list">
+          <li>
+            <Link href={pictoryAvisPath(lang)}>Opiniones Pictory AI (2026)</Link>
+            <div className="muted">Análisis completo: text-to-video, subtítulos, avatares, voces IA, límites y workflow.</div>
+          </li>
+          <li>
+            <Link href={pictoryPricingPath(lang)}>Precios Pictory AI (2026)</Link>
+            <div className="muted">Comparar Starter, Professional, Team, minutos de vídeo, Brand Kits y AI Credits.</div>
+          </li>
+          <li>
+            <Link href={pictoryYoutubePath(lang)}>Pictory AI para YouTube (2026)</Link>
+            <div className="muted">Convertir scripts, artículos y vídeos largos en YouTube, Shorts y subtítulos.</div>
+          </li>
+          <li>
+            <Link href={pictoryCreditsPath(lang)}>AI Credits Pictory (2026)</Link>
+            <div className="muted">Entender consumo generativo para imágenes, vídeo, avatares y packs.</div>
           </li>
         </ul>
       </section>

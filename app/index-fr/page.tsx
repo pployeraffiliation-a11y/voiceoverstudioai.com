@@ -14,6 +14,10 @@ import {
   guidePath,
   homePath,
   methodologyPath,
+  pictoryAvisPath,
+  pictoryCreditsPath,
+  pictoryPricingPath,
+  pictoryYoutubePath,
   podcastsPath,
   playbookPath,
   pricingPath,
@@ -29,20 +33,20 @@ const HOME_LANGUAGES = Object.fromEntries(SITE.supportedLangs.map((l) => [l, hom
 const OG_IMAGE = '/assets/images/capture-hero.png';
 
 export const metadata: Metadata = {
-  title: `${SITE.brandName} — Guides ElevenLabs (2026)`,
-  description: 'Guides et workflows ElevenLabs (2026) : prix, prompts, dubbing, Projects, API, YouTube, podcasts et e-learning.',
+  title: `${SITE.brandName} — Guides IA voix, vidéo et Pictory (2026)`,
+  description: 'Guides et workflows IA (2026) : ElevenLabs pour la voix, Pictory AI pour la vidéo, prix, prompts, dubbing, YouTube et captions.',
   alternates: { canonical: homePath('fr'), languages: HOME_LANGUAGES },
   openGraph: {
     type: 'website',
-    title: `${SITE.brandName} — Guides ElevenLabs (2026)`,
-    description: 'Guides et workflows ElevenLabs (2026) : prix, prompts, dubbing, Projects, API, YouTube, podcasts et e-learning.',
+    title: `${SITE.brandName} — Guides IA voix, vidéo et Pictory (2026)`,
+    description: 'Guides et workflows IA (2026) : ElevenLabs pour la voix, Pictory AI pour la vidéo, prix, prompts, dubbing, YouTube et captions.',
     url: homePath('fr'),
     images: [{ url: OG_IMAGE }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${SITE.brandName} — Guides ElevenLabs (2026)`,
-    description: 'Guides et workflows ElevenLabs (2026) : prix, prompts, dubbing, Projects, API, YouTube, podcasts et e-learning.',
+    title: `${SITE.brandName} — Guides IA voix, vidéo et Pictory (2026)`,
+    description: 'Guides et workflows IA (2026) : ElevenLabs pour la voix, Pictory AI pour la vidéo, prix, prompts, dubbing, YouTube et captions.',
     images: [OG_IMAGE],
   },
 };
@@ -67,6 +71,10 @@ export default async function HomePageFr() {
     podcastsPath(lang),
     elearningPath(lang),
     adsPath(lang),
+    pictoryAvisPath(lang),
+    pictoryPricingPath(lang),
+    pictoryYoutubePath(lang),
+    pictoryCreditsPath(lang),
     aboutPath(lang),
     methodologyPath(lang),
     sourcesPath(lang),
@@ -79,7 +87,7 @@ export default async function HomePageFr() {
     <div className="stack">
       <section className="hero">
         <h1>{SITE.brandName}</h1>
-        <p>Commencez par le guide, puis utilisez le hub blog pour les prix, prompts, workflows de dubbing et comparatifs.</p>
+        <p>Guides pratiques pour produire voix off, dubbing, vidéos IA, captions et workflows YouTube avec ElevenLabs et Pictory AI.</p>
       </section>
 
       <section className="card" aria-label="Start here">
@@ -148,6 +156,28 @@ export default async function HomePageFr() {
           <li>
             <Link href={adsPath(lang)}>Publicité (2026)</Link>
             <div className="muted">Variantes créatives, tests de hooks et validation brand-safe.</div>
+          </li>
+        </ul>
+      </section>
+
+      <section className="card" aria-label="Cluster Pictory AI">
+        <h2>Cluster Pictory AI</h2>
+        <ul className="list">
+          <li>
+            <Link href={pictoryAvisPath(lang)}>Avis Pictory AI (2026)</Link>
+            <div className="muted">Test complet : text-to-video, captions, avatars, voix IA, limites et workflow recommandé.</div>
+          </li>
+          <li>
+            <Link href={pictoryPricingPath(lang)}>Tarifs Pictory AI (2026)</Link>
+            <div className="muted">Comparer Starter, Professional, Team, minutes vidéo, Brand Kits et AI Credits.</div>
+          </li>
+          <li>
+            <Link href={pictoryYoutubePath(lang)}>Pictory AI pour YouTube (2026)</Link>
+            <div className="muted">Créer vidéos longues, Shorts, captions et assets sociaux à partir d’un script ou d’un article.</div>
+          </li>
+          <li>
+            <Link href={pictoryCreditsPath(lang)}>AI Credits Pictory (2026)</Link>
+            <div className="muted">Comprendre la consommation des fonctions génératives : images, vidéo, avatars et packs.</div>
           </li>
         </ul>
       </section>
