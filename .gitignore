@@ -16,6 +16,18 @@ public/assets/videos/*.mp4
 !public/assets/videos/demo2.mp4
 !public/assets/videos/demo3.mp4
 !public/assets/videos/Studio 3.0 .mp4
+!public/assets/videos/elevenlabs-multilingual-demo-1.mp4
+!public/assets/videos/elevenlabs-multilingual-demo-2.mp4
+!public/assets/videos/kling-group-demo.mp4
+!public/assets/videos/kling-i2v-demo-boy.mp4
+!public/assets/videos/kling-i2v-demo-cat.mp4
+!public/assets/videos/kling-i2v-demo-dragon.mp4
+!public/assets/videos/kling-i2v-demo-halo.mp4
+!public/assets/videos/kling-motion-control-demo-1.mp4
+!public/assets/videos/kling-motion-control-demo-2.mp4
+!public/assets/videos/kling-multishot-demo-1.mp4
+!public/assets/videos/kling-multishot-demo-2.mp4
+!public/assets/videos/kling-multishot-demo-3.mp4
 
 # SEO audit exports
 _ahrefs/
