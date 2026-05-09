@@ -17,6 +17,19 @@ export function SiteHeader() {
   const legal = legalNoticePath(lang);
   const privacy = privacyPath(lang);
 
+  const isKling = pathname.includes('kling');
+  const isPictory = pathname.includes('pictory');
+
+  const ctaHref = isKling
+    ? SITE.klingAffiliateLink
+    : isPictory
+    ? SITE.pictoryAffiliateLink
+    : SITE.affiliateLink;
+
+  const klingLabel: Record<string, string> = { en: 'Try Kling AI', fr: 'Essayer Kling AI', de: 'Kling AI testen', es: 'Probar Kling AI' };
+  const pictoryLabel: Record<string, string> = { en: 'Try Pictory', fr: 'Essayer Pictory', de: 'Pictory testen', es: 'Probar Pictory' };
+  const ctaLabel = isKling ? klingLabel[lang] : isPictory ? pictoryLabel[lang] : t.cta;
+
   return (
     <header className="header">
       <div className="header-inner">
@@ -32,8 +45,8 @@ export function SiteHeader() {
             <Link href={blog}>{t.blog}</Link>
             <Link href={privacy}>{t.privacy}</Link>
             <Link href={legal}>{t.legal}</Link>
-            <a className="cta-btn" data-cta="" href={SITE.affiliateLink} rel="noopener noreferrer sponsored" target="_blank">
-              {t.cta}
+            <a className="cta-btn" data-cta="" href={ctaHref} rel="noopener noreferrer sponsored" target="_blank">
+              {ctaLabel}
             </a>
           </nav>
           <LanguageSelect />
