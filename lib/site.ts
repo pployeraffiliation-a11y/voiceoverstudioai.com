@@ -5,6 +5,7 @@ export const SITE = {
   ga4Id: 'G-ZVBSC02R2X',
   affiliateLink: 'https://try.elevenlabs.io/ngxkdu61n0np',
   pictoryAffiliateLink: 'https://pictory.ai?ref=voiceoverstudioai',
+  klingAffiliateLink: 'https://klingaiaffiliate.pxf.io/xJZJqx',
   contactEmail: 'p.ployer.affiliation@gmail.com',
   supportedLangs: ['en', 'fr', 'de', 'es'] as const,
 };
@@ -201,6 +202,53 @@ export function pictoryCreditsPath(lang: Lang): string {
   if (lang === 'es') return '/blog/pictory-ai-creditos-2026-es';
   if (lang === 'de') return '/blog/pictory-ai-credits-2026-de';
   return '/blog/pictory-ai-credits-2026';
+}
+
+export function klingGuidePath(lang: Lang): string {
+  const base = '/guide-kling-ai';
+  return lang === 'en' ? base : `${base}-${lang}`;
+}
+
+export function klingReviewPath(lang: Lang): string {
+  if (lang === 'fr') return '/blog/kling-ai-avis-2026-fr';
+  if (lang === 'de') return '/blog/kling-ai-erfahrungen-2026-de';
+  if (lang === 'es') return '/blog/kling-ai-opiniones-2026-es';
+  return '/blog/kling-ai-review-2026';
+}
+
+export function klingPricingPath(lang: Lang): string {
+  if (lang === 'fr') return '/blog/kling-ai-prix-2026-fr';
+  if (lang === 'de') return '/blog/kling-ai-preise-2026-de';
+  if (lang === 'es') return '/blog/kling-ai-precios-2026-es';
+  return '/blog/kling-ai-pricing-2026';
+}
+
+export function klingT2VPath(lang: Lang): string {
+  if (lang === 'fr') return '/blog/kling-ai-texte-en-video-2026-fr';
+  if (lang === 'de') return '/blog/kling-ai-text-zu-video-2026-de';
+  if (lang === 'es') return '/blog/kling-ai-texto-a-video-2026-es';
+  return '/blog/kling-ai-text-to-video-2026';
+}
+
+export function klingYoutubePath(lang: Lang): string {
+  if (lang === 'fr') return '/blog/kling-ai-pour-youtube-2026-fr';
+  if (lang === 'de') return '/blog/kling-ai-fuer-youtube-2026-de';
+  if (lang === 'es') return '/blog/kling-ai-para-youtube-2026-es';
+  return '/blog/kling-ai-for-youtube-2026';
+}
+
+export function klingI2VPath(lang: Lang): string {
+  if (lang === 'fr') return '/blog/kling-ai-image-en-video-2026-fr';
+  if (lang === 'de') return '/blog/kling-ai-bild-zu-video-2026-de';
+  if (lang === 'es') return '/blog/kling-ai-imagen-a-video-2026-es';
+  return '/blog/kling-ai-image-to-video-2026';
+}
+
+export function klingAlternativesPath(lang: Lang): string {
+  if (lang === 'fr') return '/blog/kling-ai-alternatives-2026-fr';
+  if (lang === 'de') return '/blog/kling-ai-alternativen-2026-de';
+  if (lang === 'es') return '/blog/kling-ai-alternativas-2026-es';
+  return '/blog/kling-ai-alternatives-2026';
 }
 
 export function aboutPath(lang: Lang): string {

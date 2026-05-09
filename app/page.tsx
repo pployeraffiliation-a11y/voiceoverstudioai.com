@@ -13,6 +13,13 @@ import {
   elearningPath,
   guidePath,
   homePath,
+  klingAlternativesPath,
+  klingGuidePath,
+  klingI2VPath,
+  klingPricingPath,
+  klingReviewPath,
+  klingT2VPath,
+  klingYoutubePath,
   methodologyPath,
   pictoryAvisPath,
   pictoryCreditsPath,
@@ -32,9 +39,9 @@ import {
 export async function generateMetadata(): Promise<Metadata> {
   const languages = Object.fromEntries(SITE.supportedLangs.map((l) => [l, homePath(l)]));
   const ogImage = '/assets/images/capture-hero.png';
-  const title = `${SITE.brandName} — AI voice, video and Pictory guides (2026)`;
+  const title = `${SITE.brandName} — AI voice, video and Kling AI guides (2026)`;
   const description =
-    'Practical AI workflows for ElevenLabs voiceovers and Pictory AI video production: pricing, prompts, dubbing, YouTube, captions and AI Credits.';
+    'Practical AI workflows for ElevenLabs voiceovers, Kling AI video generation and Pictory AI: pricing, prompts, dubbing, YouTube, captions and credits.';
 
   return {
     title,
@@ -80,6 +87,13 @@ export default async function HomePage() {
     pictoryPricingPath(lang),
     pictoryYoutubePath(lang),
     pictoryCreditsPath(lang),
+    klingGuidePath(lang),
+    klingReviewPath(lang),
+    klingPricingPath(lang),
+    klingT2VPath(lang),
+    klingYoutubePath(lang),
+    klingI2VPath(lang),
+    klingAlternativesPath(lang),
     aboutPath(lang),
     methodologyPath(lang),
     sourcesPath(lang),
@@ -92,7 +106,7 @@ export default async function HomePage() {
     <div className="stack">
       <section className="hero">
         <h1>{SITE.brandName}</h1>
-        <p>{t.home}: practical workflows for AI voiceovers, dubbing, AI video, captions and YouTube publishing.</p>
+        <p>{t.home}: practical workflows for AI voiceovers, dubbing, Kling AI video generation, captions and YouTube publishing.</p>
       </section>
 
       <section className="card" aria-label="Start here">
@@ -161,6 +175,40 @@ export default async function HomePage() {
           <li>
             <Link href={adsPath(lang)}>Ads (2026)</Link>
             <div className="muted">Creative variants, hook testing and brand-safe approval loops.</div>
+          </li>
+        </ul>
+      </section>
+
+      <section className="card" aria-label="Kling AI cluster">
+        <h2>Kling AI cluster</h2>
+        <ul className="list">
+          <li>
+            <Link href={klingGuidePath(lang)}>Kling AI guide</Link>
+            <div className="muted">Pillar page for Kling AI: text-to-video, image-to-video, camera control and demos.</div>
+          </li>
+          <li>
+            <Link href={klingReviewPath(lang)}>Kling AI review (2026)</Link>
+            <div className="muted">Full test: motion quality, camera control, image-to-video, pricing and workflow.</div>
+          </li>
+          <li>
+            <Link href={klingPricingPath(lang)}>Kling AI pricing (2026)</Link>
+            <div className="muted">Credit system, plans, per-second costs and what each resolution actually costs.</div>
+          </li>
+          <li>
+            <Link href={klingT2VPath(lang)}>Kling AI text-to-video (2026)</Link>
+            <div className="muted">Prompt structure, camera direction and multi-shot for cinematic clips.</div>
+          </li>
+          <li>
+            <Link href={klingYoutubePath(lang)}>Kling AI for YouTube (2026)</Link>
+            <div className="muted">B-roll, hooks, Shorts and channel workflows with Kling-generated video.</div>
+          </li>
+          <li>
+            <Link href={klingI2VPath(lang)}>Kling AI image-to-video (2026)</Link>
+            <div className="muted">Animate product shots, portraits and AI art with motion hints and style consistency.</div>
+          </li>
+          <li>
+            <Link href={klingAlternativesPath(lang)}>Kling AI alternatives (2026)</Link>
+            <div className="muted">When to compare other AI video tools and how to choose for your workflow.</div>
           </li>
         </ul>
       </section>

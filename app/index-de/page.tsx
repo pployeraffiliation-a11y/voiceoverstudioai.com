@@ -13,6 +13,13 @@ import {
   elearningPath,
   guidePath,
   homePath,
+  klingAlternativesPath,
+  klingGuidePath,
+  klingI2VPath,
+  klingPricingPath,
+  klingReviewPath,
+  klingT2VPath,
+  klingYoutubePath,
   methodologyPath,
   pictoryAvisPath,
   pictoryCreditsPath,
@@ -33,20 +40,20 @@ const HOME_LANGUAGES = Object.fromEntries(SITE.supportedLangs.map((l) => [l, hom
 const OG_IMAGE = '/assets/images/capture-hero.png';
 
 export const metadata: Metadata = {
-  title: `${SITE.brandName} — AI Voice, Video und Pictory Guides (2026)`,
-  description: 'Praktische AI-Workflows 2026: ElevenLabs für Voice und Dubbing, Pictory AI für Video, Preise, Prompts, YouTube, Captions und AI Credits.',
+  title: `${SITE.brandName} — AI Voice, Kling AI Video und Pictory Guides (2026)`,
+  description: 'Praktische AI-Workflows 2026: ElevenLabs für Voice, Kling AI für Video, Pictory für Captions — Preise, Prompts, Dubbing und YouTube.',
   alternates: { canonical: homePath('de'), languages: HOME_LANGUAGES },
   openGraph: {
     type: 'website',
-    title: `${SITE.brandName} — AI Voice, Video und Pictory Guides (2026)`,
-    description: 'Praktische AI-Workflows 2026: ElevenLabs für Voice und Dubbing, Pictory AI für Video, Preise, Prompts, YouTube, Captions und AI Credits.',
+    title: `${SITE.brandName} — AI Voice, Kling AI Video und Pictory Guides (2026)`,
+    description: 'Praktische AI-Workflows 2026: ElevenLabs für Voice, Kling AI für Video, Pictory für Captions — Preise, Prompts, Dubbing und YouTube.',
     url: homePath('de'),
     images: [{ url: OG_IMAGE }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${SITE.brandName} — AI Voice, Video und Pictory Guides (2026)`,
-    description: 'Praktische AI-Workflows 2026: ElevenLabs für Voice und Dubbing, Pictory AI für Video, Preise, Prompts, YouTube, Captions und AI Credits.',
+    title: `${SITE.brandName} — AI Voice, Kling AI Video und Pictory Guides (2026)`,
+    description: 'Praktische AI-Workflows 2026: ElevenLabs für Voice, Kling AI für Video, Pictory für Captions — Preise, Prompts, Dubbing und YouTube.',
     images: [OG_IMAGE],
   },
 };
@@ -75,6 +82,13 @@ export default async function HomePageDe() {
     pictoryPricingPath(lang),
     pictoryYoutubePath(lang),
     pictoryCreditsPath(lang),
+    klingGuidePath(lang),
+    klingReviewPath(lang),
+    klingPricingPath(lang),
+    klingT2VPath(lang),
+    klingYoutubePath(lang),
+    klingI2VPath(lang),
+    klingAlternativesPath(lang),
     aboutPath(lang),
     methodologyPath(lang),
     sourcesPath(lang),
@@ -87,7 +101,7 @@ export default async function HomePageDe() {
     <div className="stack">
       <section className="hero">
         <h1>{SITE.brandName}</h1>
-        <p>Praktische Guides für Voiceover, Dubbing, AI Video, Captions und YouTube-Workflows mit ElevenLabs und Pictory AI.</p>
+        <p>Praktische Guides für Voiceover, Dubbing, Kling AI Video, Captions und YouTube-Workflows mit ElevenLabs und Pictory AI.</p>
       </section>
 
       <section className="card" aria-label="Start here">
@@ -156,6 +170,40 @@ export default async function HomePageDe() {
           <li>
             <Link href={adsPath(lang)}>Ads (2026)</Link>
             <div className="muted">Creative-Varianten, Hook-Tests und brand-sichere Freigaben.</div>
+          </li>
+        </ul>
+      </section>
+
+      <section className="card" aria-label="Kling AI Cluster">
+        <h2>Kling AI Cluster</h2>
+        <ul className="list">
+          <li>
+            <Link href={klingGuidePath(lang)}>Kling AI Guide</Link>
+            <div className="muted">Pillar-Seite für Kling AI: Text-zu-Video, Bild-zu-Video, Kamera-Kontrolle und Demos.</div>
+          </li>
+          <li>
+            <Link href={klingReviewPath(lang)}>Kling AI Erfahrungen (2026)</Link>
+            <div className="muted">Vollständiger Test: Bewegungsqualität, Kamera-Kontrolle, Bild-zu-Video und Preise.</div>
+          </li>
+          <li>
+            <Link href={klingPricingPath(lang)}>Kling AI Preise (2026)</Link>
+            <div className="muted">Kreditsystem, Pläne und reale Kosten pro Sekunde je nach Auflösung.</div>
+          </li>
+          <li>
+            <Link href={klingT2VPath(lang)}>Kling AI Text zu Video (2026)</Link>
+            <div className="muted">Prompt-Struktur, Kameraführung und Multi-Shot für kinematische Clips.</div>
+          </li>
+          <li>
+            <Link href={klingYoutubePath(lang)}>Kling AI für YouTube (2026)</Link>
+            <div className="muted">B-Roll, Hooks, Shorts und Kanal-Workflows mit generiertem Video.</div>
+          </li>
+          <li>
+            <Link href={klingI2VPath(lang)}>Kling AI Bild zu Video (2026)</Link>
+            <div className="muted">Produktfotos, Portraits und KI-Art mit Motion-Hints und Stilkonsistenz animieren.</div>
+          </li>
+          <li>
+            <Link href={klingAlternativesPath(lang)}>Kling AI Alternativen (2026)</Link>
+            <div className="muted">Wann Alternativen sinnvoll sind und wie man für den eigenen Workflow entscheidet.</div>
           </li>
         </ul>
       </section>
