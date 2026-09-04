@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import React from 'react';
+import { headers } from 'next/headers';
 import './globals.css';
 import { SITE } from '@/lib/site';
 import { CookieBanner } from '@/components/CookieBanner';
@@ -45,9 +46,25 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+function resolveLang(pathname: string): string {
+  const path = pathname.replace(/\/+$/, '');
+  if (/-de$/.test(path)) return 'de';
+  if (/-es$/.test(path)) return 'es';
+  if (/-fr$/.test(path)) return 'fr';
+  return 'en';
+}
+
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const headersList = await headers();
+  const pathname =
+    headersList.get('x-invoke-path') ??
+    headersList.get('x-matched-path') ??
+    headersList.get('next-url') ??
+    headersList.get('x-pathname') ??
+    '';
+  const lang = resolveLang(pathname);
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={lang} suppressHydrationWarning>
       <body>
         {React.createElement('meta', {
           name: 'impact-site-verification',
